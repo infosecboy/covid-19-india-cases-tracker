@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset = "UTF-8">
+		<meta name = "viewport" content = "width-device-width, initial-scale=1.0">
+		<title>Covid 19 crisis in India</title>
+		<link rel = "stylesheet" href ="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css">
+		
+	</head>
+	<body>
+		<div class ="container">
+		<h1 class = "text-class mt-5">Covid 19  DATA OF INDIA</h1>
+		<br>
+		<br>
+		<br>
+		<table class = "table table-hover">
+		<thead>
+		<tr>
+		<th>Total Cases</th>
+		<th>Active Cases</th>
+		<th>Recovered Cases</th>
+		<th>Deaths</th>
+		</tr>
+		</thead>
+		<tbody>
+		
+		<tr id ="data">
+		<td></td>
+		<td></td>
+		<td></td>
+		<td></td>
+		</tr>
+		
+		<tr>
+		<td></td>
+		<td></td>
+		<td></td>
+		<td></td>
+		</tr>
+		
+		
+		
+		
+		</tbody>
+		</table>
+		<button type="button" class = "btn btn-danger btn-block">
+		Refresh Data
+		</button>
+		
+		</div>
+	</body>
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+	<script> 
+	$(document).ready(function(){
+	init()
+	
+	
+	function init(){
+	var url = "https://api.covid19api.com/dayone/country/India"
+	var data = ''
+	
+	$.get(url,function(data){
+	console.log(data.slice(-1)[0])
+	
+	data = `
+	<td>${data.slice(-1)[0].Confirmed}</td>
+	<td>${data.slice(-1)[0].Active}</td>
+	<td>${data.slice(-1)[0].Recovered}</td>
+	<td>${data.slice(-1)[0].Deaths}</td>
+	`
+	$("#data").html(data)
+	
+	})
+	}
+	
+	
+	 $(document).ready(function(){
+        $("button").click(function(){
+            location.reload(true);
+        });
+    });
+	
+	
+	
+	
+	
+	
+	
+	})
+	
+	</script>
+</html>
